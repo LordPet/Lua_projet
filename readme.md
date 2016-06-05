@@ -26,6 +26,7 @@
 -Frogger
 -Minesweeper
 -Benelux with references with oter people of 
+-Thomas Dora l'exploratrice. Scouts
 
 ## Controls
 
@@ -45,6 +46,8 @@ Arnaud needs to dodge the cars to get to his cars and drive to his class.
 
 Arnaud dodge obstacles in his car. The car breaks after the level.
 
+
+
 ### Level 3 Sonic
 
 Arnaud runs to his class and tries to dodge all of the Nabil's obstacle.
@@ -53,6 +56,7 @@ Arnaud runs to his class and tries to dodge all of the Nabil's obstacle.
 
 Arnaud needs to save his teacher a.k.a Princess Berger.
 
+
 ### Level 5 Snake
 
 Arnaud needs to beat the Python Lord Fabrice.
@@ -60,3 +64,29 @@ Arnaud needs to beat the Python Lord Fabrice.
 ### Level 6 Mario VS DonkeyKong
 
 Arnaud tries to climb the stairs to his class and there's Antoine throwing Greg down the stairs.
+
+### Boss
+
+#### Level Boss
+
+Marc-Antoine, boss who's really irritating
+
+#### Level Boss
+
+Thomas 'Dora' with his legendary bow
+
+#### Level Boss
+
+Fabrice the python lord
+
+#### Level Boss
+
+Eric, Rockstar and Cigarettes
+
+#### Level Boss
+
+Rachid, the rotating world boss
+
+#### Level Boss
+
+Maxime and Olivier, the naked guy and the Tea Monster
