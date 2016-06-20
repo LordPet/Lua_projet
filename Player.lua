@@ -1,5 +1,5 @@
 Player = {}
- 
+
 -- Constructor
 function Player:new()
     -- define our parameters here
@@ -26,21 +26,21 @@ function Player:jump()
         self.canJump = false
     end
 end
- 
+
 function Player:moveRight()
     self.xSpeed = self.runSpeed
     self.state = "moveRight"
 end
- 
+
 function Player:moveLeft()
     self.xSpeed = -1 * (self.runSpeed)
     self.state = "moveLeft"
 end
- 
+
 function Player:stop()
     self.xSpeed = 0
 end
- 
+
 function Player:hitFloor(maxY)
     self.y = maxY - self.height
     self.ySpeed = 0
@@ -52,10 +52,10 @@ function Player:update(dt, gravity)
     -- update the player's position
     self.x = self.x + (self.xSpeed * dt)
     self.y = self.y + (self.ySpeed * dt)
- 
+
     -- apply gravity
     self.ySpeed = self.ySpeed + (gravity * dt)
- 
+
     -- update the player's state
     if not(self.canJump) then
         if self.ySpeed < 0 then

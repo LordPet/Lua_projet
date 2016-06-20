@@ -1,6 +1,7 @@
 function love.load()
 	require "Level6"
-	level6_load()	
+	love.window.setMode(580,900)
+	level6_load()
 end
 
 function love.draw()
@@ -10,6 +11,10 @@ end
 function love.update(dt)
 	level6_update(dt)
 end
+
+--[[function love.keypressed(key)
+	level6_keypressed(key);
+end]]
 
 function love.joystickpressed(joystick)
 	level6_joystickpressed(joystick)
