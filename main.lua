@@ -1,6 +1,5 @@
 function love.load()
-	require "Level6"
-	love.window.setMode(580,900)
+	require "Level6"	
 	level6_load()
 end
 
