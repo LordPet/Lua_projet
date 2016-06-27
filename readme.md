@@ -25,7 +25,7 @@
 -Jacques Berger the princess we need to save
 -Frogger
 -Minesweeper
--Benelux with references with oter people of 
+-Benelux with references with oter people of
 -Thomas Dora l'exploratrice. Scouts
 
 ## Controls
@@ -59,7 +59,8 @@ Arnaud needs to save his teacher a.k.a Princess Berger.
 
 ### Level 5 Snake
 
-Arnaud needs to beat the Python Lord Fabrice.
+Arnaud needs to beat the Python Lord Fabrice. To acheive it, he need to recovers all the good grades before the timer run out. When Arnaud grab a grade, fabrice the python lord get shorter, so its easier for
+Arnaud to clear the level. If the python lord catch Arnaud he will lose half of his grade and the python lord will get bigger.
 
 ### Level 6 Mario VS DonkeyKong
 
