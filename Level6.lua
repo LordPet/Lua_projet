@@ -1,5 +1,6 @@
 
 function level6_load()
+    local HC = require "HardonCollider"
     g = love.graphics
     playerColor = {255,0,128}
     groundColor = {25,200,25}
@@ -13,21 +14,20 @@ function level6_load()
     p = Player:new()
 
     p.x = 2*32
-    p.y = 24*32
+    p.y = 2*32
     map_x = 16
     map_y = 26
     love.window.setMode(map_x*32,map_y*32)
     p.width = 32
     p.height = 32
-    p.jumpSpeed = -400
+    p.jumpSpeed = -1200
     p.runSpeed = 500
 
+	gravity = 1800 -- 1800 is the normal gravity
 
-	  gravity = 1800 -- 1800 is the normal gravity
-
-    yFloor = 800
-
-    map = {
+    yFloor = 25*32
+    collider = HC(100, on_collide)
+    p.map = {
     		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, -- 1
     		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, -- 2
     		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, -- 3
@@ -53,11 +53,14 @@ function level6_load()
     		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, -- 23
     		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, -- 24
     		{ 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 }, -- 25
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }  -- 26
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }  -- 26
     }
 end
 
 function level6_update(dt)
+    require("lovebird").update()
+    local x = p.x
+    local y = p.y
     if love.keyboard.isDown("right") then
         p:moveRight()
     end
@@ -73,12 +76,22 @@ function level6_update(dt)
     -- update the player's position
     p:update(dt, gravity)
 
-    -- stop the player when they hit the borders
-    if p.x > 800 - p.width then p.x = 800 - p.width end
     if p.x < 0 then p.x = 0 end
+    if p.x > 15*32 then p.x = 15*32 end
     if p.y < 0 then p.y = 0 end
-    if p.y > yFloor - p.height then
-        p:hitFloor(yFloor)
+    if p.y > 25*32 then p:hitFloor(26*32) end
+
+    --if p.x < 10*32 then p.x = 10*32 end
+
+    firstX, secondX = p:positionX()
+    firstY, secondY = p:positionY()
+    if  p.map[firstY+1][firstX+1] == 1 or p.map[secondY+1][firstX+1] == 1 or
+        p.map[firstY+1][secondX+1] == 1 or p.map[secondY+1][secondX+1] == 1 then
+            p:hitFloor(y+32)
+            if p.state == "moveRight" and p.x > x then
+                print(p.state)
+                p.x = x
+            end
     end
 end
 
@@ -126,11 +139,11 @@ end
 function level6_draw()
     -- draw the player shape
     g.setColor(playerColor)
-    g.rectangle("fill", p.x, p.y-32, p.width, p.height)
+    g.rectangle("fill", p.x, p.y, p.width, p.height)
 
-    for y=1, #map do
-        for x=1, #map[y] do
-            if map[y][x] == 1 then
+    for y=1, #p.map do
+        for x=1, #p.map[y] do
+            if p.map[y][x] == 1 then
               love.graphics.rectangle("line", (x-1) * 32, (y-1) * 32, 32, 32)
             end
         end

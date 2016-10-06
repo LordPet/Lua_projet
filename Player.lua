@@ -13,7 +13,8 @@ function Player:new()
     state = "",
     jumpSpeed = 0,
     runSpeed = 0,
-    canJump = false
+    canJump = false,
+    map = ""
     }
     setmetatable(object, { __index = Player })
     return object
@@ -23,7 +24,7 @@ end
 function Player:jump()
     if self.canJump then
         self.ySpeed = self.jumpSpeed
-        self.canJump = false
+        self.canJump = false        
     end
 end
 
@@ -45,6 +46,22 @@ function Player:hitFloor(maxY)
     self.y = maxY - self.height
     self.ySpeed = 0
     self.canJump = true
+end
+
+function Player:positionX()
+    if self.x % self.width == 0 then
+        return self.x / self.width, self.x / self.width
+    else
+        return math.floor(self.x / self.width),math.floor((self.x+self.width) / self.width)
+    end
+end
+
+function Player:positionY()
+    if self.y % self.width == 0 then
+        return self.y / self.width, self.y / self.width
+    else
+        return math.floor(self.y / self.width),math.floor((self.y+self.width) / self.width)
+    end
 end
 
 -- Update function
@@ -72,4 +89,8 @@ function Player:update(dt, gravity)
             self.state = "stand"
         end
     end
+end
+
+function Player:updateState(state)
+    self.state = state
 end

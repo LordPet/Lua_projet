@@ -1,5 +1,5 @@
 function love.load()
-	require "Level6"	
+	require "Level6"
 	level6_load()
 end
 
@@ -7,7 +7,7 @@ function love.draw()
 	level6_draw()
 end
 
-function love.update(dt)
+function love.update(dt)	
 	level6_update(dt)
 end
 
